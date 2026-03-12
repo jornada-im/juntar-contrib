@@ -1,29 +1,18 @@
-# build_dataset.210467001.R
+# jrn467001_XDesert_Cfix.R
 # 
-# BOILERPLATE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# This is a template build script using R to prepare a dataset
-# for EDI. You can safely remove this and other boilerplate
-# and use the rest to design a new R script for your data.
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# Original file build_dataset.210467001.R
 
-
-# Set the working directory to a local or network share path
-# (this only works in RStudio). 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-# If this fails try something like these:
-# setwd('/Volumes/unix/path/to/datasets/ds210467001.../')
-# setwd('Z:\\windows\path\to\datasets\ds210467001...\)
+source('config.R')
+# Set paths
+out_path <- paste(im_path, 'WIP_packages/210467001_XDesert_Cfix', sep='/')
+in_path <- paste(out_path, "source_data", sep="/")
+# Output data file name
+f_out <- paste(out_path, "jrn467001_Xdesert_Cfix.csv", sep='/')
 
 library(tidyverse)
 
-# Path to incoming source data files
-dsource <- "./source_data/"
-
-# Output data file name
-f_out1 <- "jrn467001_Xdesert_Cfix.csv"
-
 # read first dataset
-df_in <- read_csv(paste0(dsource, "Study467cfixCrossDesert.csv")) %>%
+df_in <- read_csv(paste(in_path, "Study467cfixCrossDesert.csv", sep="/")) %>%
   rename(MeasurementDate = MeasurmentDate)
 
 
@@ -46,7 +35,7 @@ write.csv(df.export, f_out1, quote=F, row.names=F)
 f_out2 <- "jrn467001_Xdesert_LICOR_Meta.csv"
 
 # read first dataset
-df_in <- read_csv(paste0(dsource, "CrossDesertMetaLICOR.csv")) %>%
+df_in <- read_csv(paste(in_path, "CrossDesertMetaLICOR.csv", sep="/")) %>%
   rename(MeasurementDate = MeasurmentDate)
 
 
@@ -69,7 +58,7 @@ write.csv(df.export, f_out2, quote=F, row.names=F)
 f_out3 <- "jrn467001_Xdesert_LICOR_Tracking.csv"
 
 # read first dataset
-df_in <- read_csv(paste0(dsource, "CrossDesertTrackingLICOR.csv"))#, 
+df_in <- read_csv(paste(in_path, "CrossDesertTrackingLICOR.csv", sep="/"))#, 
 #		  skip = 12, na = c('nan', '.', ''))
 
 
@@ -91,7 +80,7 @@ write.csv(df.export, f_out3, quote=F, row.names=F)
 f_out4 <- "RawLicor_variable_key.csv"
 
 # read first dataset
-df_in <- read_csv(paste0(dsource, "RawLicor_variable_key.csv"))#, 
+df_in <- read_csv(paste(in_path, "RawLicor_variable_key.csv", sep="/"))#, 
 #		  skip = 12, na = c('nan', '.', ''))
 
 

@@ -1,29 +1,18 @@
-# build_dataset.210467002.R
+# jrn467002_XDesert_LPI.R
 # 
-# BOILERPLATE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# This is a template build script using R to prepare a dataset
-# for EDI. You can safely remove this and other boilerplate
-# and use the rest to design a new R script for your data.
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# Original file build_dataset.210467002.R
 
-
-# Set the working directory to a local or network share path
-# (this only works in RStudio). 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-# If this fails try something like these:
-# setwd('/Volumes/unix/path/to/datasets/ds210467002.../')
-# setwd('Z:\\windows\path\to\datasets\ds210467002...\)
+source('config.R')
+# Set paths
+out_path <- paste(im_path, 'WIP_packages/210467002_XDesert_LPI', sep='/')
+in_path <- paste(out_path, "source_data", sep="/")
+# Output data file name
+f_out <- paste(out_path, "jrn467002_Xdesert_LPI.csv", sep='/')
 
 library(tidyverse)
 
-# Path to incoming source data files
-dsource <- "./source_data/"
-
-# Output data file name
-f_out <- "jrn467002_Xdesert_LPI.csv"
-
-# read in mtcars (our example data)
-df_in <- read_csv(paste0(dsource, "XDESERTlpi.csv")) 
+# read in data
+df_in <- read_csv(paste(in_path, "XDESERTlpi.csv", sep="/")) 
 #		  skip = 12, na = c('nan', '.', ''))
 
 df.export <- df_in
@@ -41,7 +30,8 @@ unique(df.export$Recorder)
 options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out, quote=F, row.names=F)
 
-
-file.copy('./source_data/XdesertLPI.R', './XdesertLPI.R', overwrite = TRUE)
-file.copy('./source_data/Cross Desert All Sites.kmz', 'Xdesert_All_Sites.kmz', overwrite = TRUE)
-
+# Move some files
+file.copy(paste(in_path, 'XdesertLPI.R', sep="/"), paste(out_path,'XdesertLPI.R', sep="/"),
+                overwrite = TRUE)
+file.copy(paste(in_path, "Cross Desert All Sites.kmz", sep="/"), paste(out_path, "Xdesert_All_Sites.kmz", sep="/"),
+                overwrite = TRUE)
