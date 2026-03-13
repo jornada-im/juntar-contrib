@@ -6,8 +6,9 @@ source('config.R')
 # Set paths
 out_path <- paste(im_path, 'WIP_packages/210467001_XDesert_Cfix', sep='/')
 in_path <- paste(out_path, "source_data", sep="/")
-# Output data file name
-f_out <- paste(out_path, "jrn467001_Xdesert_Cfix.csv", sep='/')
+
+# Output data file 1 name
+f_out1 <- paste(out_path, "jrn467001_Xdesert_Cfix.csv", sep='/')
 
 library(tidyverse)
 
@@ -31,8 +32,8 @@ unique(df.export$Machine)
 options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out1, quote=F, row.names=F)
 
-# Output data file name
-f_out2 <- "jrn467001_Xdesert_LICOR_Meta.csv"
+# Output data file 2 name
+f_out2 <- paste(out_path, "jrn467001_Xdesert_LICOR_Meta.csv", sep='/')
 
 # read first dataset
 df_in <- read_csv(paste(in_path, "CrossDesertMetaLICOR.csv", sep="/")) %>%
@@ -54,8 +55,8 @@ unique(df.export$Machine)
 options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out2, quote=F, row.names=F)
 
-# Output data file name
-f_out3 <- "jrn467001_Xdesert_LICOR_Tracking.csv"
+# Output data file 3 name
+f_out3 <- paste(out_path, "jrn467001_Xdesert_LICOR_Tracking.csv", sep='/')
 
 # read first dataset
 df_in <- read_csv(paste(in_path, "CrossDesertTrackingLICOR.csv", sep="/"))#, 
@@ -76,8 +77,8 @@ unique(df.export$Rep)
 options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out3, quote=F, row.names=F)
 
-# Output data file name
-f_out4 <- "RawLicor_variable_key.csv"
+# Output data file 4 name
+f_out4 <- paste(out_path, "RawLicor_variable_key.csv", sep='/')
 
 # read first dataset
 df_in <- read_csv(paste(in_path, "RawLicor_variable_key.csv", sep="/"))#, 
@@ -95,10 +96,15 @@ options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out4, quote=F, row.names=F)
 
 
-# Now copy files to main dir
-file.copy('./source_data/CrossDesertJERrawLICOR.xlsx', './CrossDesertJERrawLICOR.xlsx', overwrite = TRUE)
-file.copy('./source_data/CrossDesertMOJrawLICOR.xlsx', './CrossDesertMOJrawLICOR.xlsx', overwrite = TRUE)
-file.copy('./source_data/CrossDesertSEVrawLICOR.xlsx', './CrossDesertSEVrawLICOR.xlsx', overwrite = TRUE)
-file.copy('./source_data/CrossDesertRCEWrawLICOR.xlsx', './CrossDesertRCEWrawLICOR.xlsx', overwrite = TRUE)
-file.copy('./source_data/XdesertLICORextration.R', './XdesertLICORextraction.R', overwrite = TRUE)
+# Now copy files to main dir (if needed)
+file.copy(paste(in_path, 'CrossDesertJERrawLICOR.xlsx', sep="/"),
+          paste(out_path, 'CrossDesertJERrawLICOR.xlsx', sep="/"), overwrite = TRUE)
+file.copy(paste(in_path, 'CrossDesertMOJrawLICOR.xlsx', sep="/"), 
+          paste(out_path, 'CrossDesertMOJrawLICOR.xlsx', sep="/"), overwrite = TRUE)
+file.copy(paste(in_path, 'CrossDesertSEVrawLICOR.xlsx', sep="/"),
+          paste(out_path, 'CrossDesertSEVrawLICOR.xlsx', sep="/"), overwrite = TRUE)
+file.copy(paste(in_path, 'CrossDesertRCEWrawLICOR.xlsx', sep="/"),
+          paste(out_path, 'CrossDesertRCEWrawLICOR.xlsx', sep="/"), overwrite = TRUE)
+file.copy(paste(in_path, 'XdesertLICORextration.R', sep="/"),
+          paste(out_path, 'XdesertLICORextraction.R', sep="/"), overwrite = TRUE)
 

@@ -6,7 +6,8 @@ source('config.R')
 # Set paths
 out_path <- paste(im_path, 'WIP_packages/210467002_XDesert_LPI', sep='/')
 in_path <- paste(out_path, "source_data", sep="/")
-# Output data file name
+
+# Output data file 1 name
 f_out <- paste(out_path, "jrn467002_Xdesert_LPI.csv", sep='/')
 
 library(tidyverse)
@@ -31,7 +32,7 @@ options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out, quote=F, row.names=F)
 
 # Move some files
-file.copy(paste(in_path, 'XdesertLPI.R', sep="/"), paste(out_path,'XdesertLPI.R', sep="/"),
-                overwrite = TRUE)
-file.copy(paste(in_path, "Cross Desert All Sites.kmz", sep="/"), paste(out_path, "Xdesert_All_Sites.kmz", sep="/"),
-                overwrite = TRUE)
+file.copy(paste(in_path, 'XdesertLPI.R', sep="/"),
+          paste(out_path,'XdesertLPI.R', sep="/"), overwrite = TRUE)
+file.copy(paste(in_path, "Cross Desert All Sites.kmz", sep="/"),
+          paste(out_path, "Xdesert_All_Sites.kmz", sep="/"), overwrite = TRUE)

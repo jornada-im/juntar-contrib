@@ -6,8 +6,9 @@ source('config.R')
 # Set paths
 out_path <- paste(im_path, 'WIP_packages/210467003_XDesert_soil', sep='/')
 in_path <- paste(out_path, "source_data", sep="/")
-# Output data file name
-f_out <- paste(out_path, "jrn467003_Xdesert_soil_stability.csv", sep='/')
+
+# Output data file 1 name
+f_out1 <- paste(out_path, "jrn467003_Xdesert_soil_stability.csv", sep='/')
 
 library(tidyverse)
 
@@ -43,8 +44,8 @@ options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out1, quote=F, row.names=F)
 
 
-# Output data file name
-f_out2 <- "jrn467003_Xdesert_soil_chemistry.csv"
+# Output data file 2 name
+f_out2 <- paste(out_path, "jrn467003_Xdesert_soil_chemistry.csv", sep="/")
 
 # read in file
 df_in <- read_csv(paste(in_path, "XdesertSoilChem.csv", sep="/")) %>%
@@ -66,7 +67,7 @@ options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out2, quote=F, row.names=F)
 
 # Output data file name
-f_out3 <- "jrn467003_Xdesert_soil_moisture.csv"
+f_out3 <- paste(out_path, "jrn467003_Xdesert_soil_moisture.csv", sep="/")
 
 # read in file
 df_in <- read_csv(paste(in_path, "XdesertSoilMoisture0.csv", sep="/"))# %>%
@@ -89,7 +90,7 @@ write.csv(df.export, f_out3, quote=F, row.names=F)
 
 
 # Output data file name
-f_out4 <- "jrn467003_Xdesert_PLFA_combined.csv"
+f_out4 <- paste(out_path, "jrn467003_Xdesert_PLFA_combined.csv", sep="/")
 
 # read in file
 df_in <- read_csv(paste(in_path, "Xdesert_PLFA_combinedAdapted.csv", sep="/")) %>%
@@ -109,7 +110,7 @@ options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out4, quote=F, row.names=F)
 
 # Output data file name
-f_out5 <- "jrn467003_Xdesert_soil_texture.csv"
+f_out5 <- paste(out_path, "jrn467003_Xdesert_soil_texture.csv", sep="/")
 
 # read in file
 df_in <- read_csv(paste(in_path, "CrossDesertSoilTexture.csv", sep="/")) %>% mutate(
