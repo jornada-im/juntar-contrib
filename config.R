@@ -16,3 +16,4 @@ root_path <- choose_directory()
 # Set other paths
 entry_path <- paste(root_path, "dataentry", sep="/")
 im_path <- paste(root_path, "jornada_im", sep="/")
+prep_path <- paste(im_path, "dataprep", sep="/")

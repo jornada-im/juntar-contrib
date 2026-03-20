@@ -108,3 +108,8 @@ file.copy(paste(in_path, 'CrossDesertRCEWrawLICOR.xlsx', sep="/"),
 file.copy(paste(in_path, 'XdesertLICORextration.R', sep="/"),
           paste(out_path, 'XdesertLICORextraction.R', sep="/"), overwrite = TRUE)
 
+
+#### Publish?
+library(jerald)
+publish_dataset(210467001, "edi.staging", out_path, "~/Desktop", dry_run=TRUE, s3_upload=TRUE)
+
