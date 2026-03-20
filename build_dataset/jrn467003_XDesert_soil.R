@@ -93,7 +93,7 @@ write.csv(df.export, f_out3, quote=F, row.names=F)
 f_out4 <- paste(out_path, "jrn467003_Xdesert_PLFA_combined.csv", sep="/")
 
 # read in file
-df_in <- read_csv(paste(in_path, "Xdesert_PLFA_combinedAdapted.csv", sep="/")) %>%
+df_in <- read_csv(paste(in_path, "Xdesert_PLFA_combinedAdapted_update.csv", sep="/")) %>%
   rename("ArbuscularMycorrhizalPercent" = "ArbusularMycorrhizalPercent")
 #		  skip = 12, na = c('nan', '.', ''))
 
@@ -102,7 +102,7 @@ df.export <- df_in# %>%
 
 # Check for NAs and unique values of catvars
 sapply(df.export, function(x) sum(is.na(x)))
-unique(df.export$SampleID)
+unique(df.export$SampleID) # This should probably be split apart
 unique(df.export$Depth)
 
 # Export df.export as a csv to current directory (no rownames or quoting)
@@ -113,7 +113,7 @@ write.csv(df.export, f_out4, quote=F, row.names=F)
 f_out5 <- paste(out_path, "jrn467003_Xdesert_soil_texture.csv", sep="/")
 
 # read in file
-df_in <- read_csv(paste(in_path, "CrossDesertSoilTexture.csv", sep="/")) %>% mutate(
+df_in <- read_csv(paste(in_path, "CrossDesertSoilTexture_update.csv", sep="/")) %>% mutate(
   StartDate = as.Date(StartDate, format = '%m/%d/%Y'))
 
 df.export <- df_in# %>%

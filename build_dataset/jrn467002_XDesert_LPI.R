@@ -91,7 +91,7 @@ write.csv(test, paste(out_path, "lpi_mysterycodes_test.csv", sep="/"), quote=F, 
 # Export df.export as a csv to current directory (no rownames or quoting)
 options(scipen=999)   # turns off scientific notation
 write.csv(df.export2, f_out2, quote=F, row.names=F)
-
+## NOTE - there is a comma in one citation/binomial name - put that value in quotes
 
 # Move some files
 file.copy(paste(in_path, 'XdesertLPI.R', sep="/"),
