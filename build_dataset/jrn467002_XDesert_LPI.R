@@ -10,10 +10,10 @@ out_path <- file.path(im_path, 'WIP_packages/210467002_XDesert_LPI')
 in_path <- file.path(out_path, "source_data")
 
 # Output data file 1 name
-f_out1 <- paste(out_path, "jrn467002_Xdesert_LPI.csv", sep='/')
+f_out1 <- file.path(out_path, "jrn467002_Xdesert_LPI.csv")
 
 # read in data
-df_in1 <- read_csv(paste(in_path, "XDESERTlpi.csv", sep="/")) 
+df_in1 <- read_csv(file.path(in_path, "XDESERTlpi.csv")) 
 #		  skip = 12, na = c('nan', '.', ''))
 
 df.export1 <- df_in1
@@ -58,11 +58,11 @@ write.csv(df.export1, f_out1, quote=F, row.names=F)
 
 
 # Output data file 2 name
-f_out2 <- paste(out_path, "Xdesert_codes.csv", sep='/')
+f_out2 <- file.path(out_path, "Xdesert_codes.csv")
 
 # read in data
 # Note that there were non-UTF characters here that were removed!
-df_in2 <- read_csv(paste(in_path, "XdesertCodes.csv", sep="/")) %>%
+df_in2 <- read_csv(file.path(in_path, "XdesertCodes.csv")) %>%
   rename("vocabulary"="WhichCode") %>%
   mutate(vocabulary = vocabulary |> replace_values(
     "USDA_Codes" ~ "USDA",
@@ -132,7 +132,7 @@ df.export2 <- bind_rows(df.export2, add.codes)
 # mergedusda <- tm2$merged %>% filter(!is.na(lpi_codes))
 # # Join the two into one and write
 # test <- full_join(mergedlter, mergedusda, by="lpi_codes")
-# write.csv(test, paste(out_path, "lpi_mysterycodes_test.csv", sep="/"), quote=F, row.names=F)
+# write.csv(test, file.path(out_path, "lpi_mysterycodes_test.csv"), quote=F, row.names=F)
 
 # Export df.export as a csv to current directory (no rownames or quoting)
 options(scipen=999)   # turns off scientific notation
@@ -140,10 +140,10 @@ write.csv(df.export2, f_out2, quote=T, row.names=F)
 ## NOTE - there is a comma in one citation/binomial name - put that value in quotes
 
 # Move some files
-file.copy(paste(in_path, 'XdesertLPI.R', sep="/"),
-          paste(out_path,'XdesertLPI.R', sep="/"), overwrite = TRUE)
-file.copy(paste(in_path, "Cross Desert All Sites.kmz", sep="/"),
-          paste(out_path, "Xdesert_All_Sites.kmz", sep="/"), overwrite = TRUE)
+file.copy(file.path(in_path, 'XdesertLPI.R'),
+          file.path(out_path,'XdesertLPI.R'), overwrite = TRUE)
+file.copy(file.path(in_path, "Cross Desert All Sites.kmz"),
+          file.path(out_path, "Xdesert_All_Sites.kmz"), overwrite = TRUE)
 
 #### Publish?
 library(jerald)

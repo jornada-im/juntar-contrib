@@ -4,16 +4,16 @@
 
 source('config.R')
 # Set paths
-out_path <- paste(im_path, 'WIP_packages/210467003_XDesert_soil', sep='/')
-in_path <- paste(out_path, "source_data", sep="/")
+out_path <- file.path(im_path, 'WIP_packages/210467003_XDesert_soil')
+in_path <- file.path(out_path, "source_data")
 
 # Output data file 1 name
-f_out1 <- paste(out_path, "jrn467003_Xdesert_soil_stability.csv", sep='/')
+f_out1 <- file.path(out_path, "jrn467003_Xdesert_soil_stability.csv")
 
 library(tidyverse)
 
 # read in file
-df_in <- read_csv(paste(in_path, "XDESERTsoilStability.csv", sep="/")) %>% mutate(
+df_in <- read_csv(file.path(in_path, "XDESERTsoilStability.csv")) %>% mutate(
   Date = as.Date(Date, format = '%m/%d/%Y'))
 #		  skip = 12, na = c('nan', '.', ''))
 
@@ -45,10 +45,10 @@ write.csv(df.export, f_out1, quote=F, row.names=F)
 
 
 # Output data file 2 name
-f_out2 <- paste(out_path, "jrn467003_Xdesert_soil_chemistry.csv", sep="/")
+f_out2 <- file.path(out_path, "jrn467003_Xdesert_soil_chemistry.csv")
 
 # read in file
-df_in <- read_csv(paste(in_path, "XdesertSoilChem.csv", sep="/")) %>%
+df_in <- read_csv(file.path(in_path, "XdesertSoilChem.csv")) %>%
   rename("SaturationPercent" = "SatruationPercent")
 #		  skip = 12, na = c('nan', '.', ''))
 
@@ -67,10 +67,10 @@ options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out2, quote=F, row.names=F)
 
 # Output data file name
-f_out3 <- paste(out_path, "jrn467003_Xdesert_soil_moisture.csv", sep="/")
+f_out3 <- file.path(out_path, "jrn467003_Xdesert_soil_moisture.csv")
 
 # read in file
-df_in <- read_csv(paste(in_path, "XdesertSoilMoisture0.csv", sep="/"))# %>%
+df_in <- read_csv(file.path(in_path, "XdesertSoilMoisture0.csv"))# %>%
 #  rename("SaturationPercent" = "SatruationPercent")
 #		  skip = 12, na = c('nan', '.', ''))
 
@@ -90,10 +90,10 @@ write.csv(df.export, f_out3, quote=F, row.names=F)
 
 
 # Output data file name
-f_out4 <- paste(out_path, "jrn467003_Xdesert_PLFA_combined.csv", sep="/")
+f_out4 <- file.path(out_path, "jrn467003_Xdesert_PLFA_combined.csv")
 
 # read in file
-df_in <- read_csv(paste(in_path, "Xdesert_PLFA_combinedAdapted_update.csv", sep="/")) %>%
+df_in <- read_csv(file.path(in_path, "Xdesert_PLFA_combinedAdapted_update.csv")) %>%
   rename("ArbuscularMycorrhizalPercent" = "ArbusularMycorrhizalPercent")
 #		  skip = 12, na = c('nan', '.', ''))
 
@@ -110,10 +110,10 @@ options(scipen=999)   # turns off scientific notation
 write.csv(df.export, f_out4, quote=F, row.names=F)
 
 # Output data file name
-f_out5 <- paste(out_path, "jrn467003_Xdesert_soil_texture.csv", sep="/")
+f_out5 <- file.path(out_path, "jrn467003_Xdesert_soil_texture.csv")
 
 # read in file
-df_in <- read_csv(paste(in_path, "CrossDesertSoilTexture_update.csv", sep="/")) %>% mutate(
+df_in <- read_csv(file.path(in_path, "CrossDesertSoilTexture_update.csv")) %>% mutate(
   StartDate = as.Date(StartDate, format = '%m/%d/%Y'))
 
 df.export <- df_in# %>%
