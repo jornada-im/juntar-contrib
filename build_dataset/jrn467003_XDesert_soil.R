@@ -135,5 +135,5 @@ write.csv(df.export, f_out5, quote=F, row.names=F)
 
 #### Publish?
 library(jerald)
-publish_dataset(210467003, "edi.staging", out_path, "~/Desktop", dry_run=TRUE, s3_upload=TRUE)
+publish_dataset(210467003, "edi.staging", out_path, dry_run=FALSE, s3_upload=TRUE)
 

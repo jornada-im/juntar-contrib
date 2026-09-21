@@ -111,5 +111,5 @@ file.copy(file.path(in_path, 'XdesertLICORextration.R'),
 
 #### Publish?
 library(jerald)
-publish_dataset(210467001, "edi.staging", out_path, "~/Desktop", dry_run=TRUE, s3_upload=TRUE)
+publish_dataset(210467001, "edi.staging", out_path, dry_run=TRUE, s3_upload=TRUE)
 

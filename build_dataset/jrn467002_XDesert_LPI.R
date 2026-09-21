@@ -37,7 +37,7 @@ df.export1 <- df.export1 |> mutate(
     "PRGL" ~ "PRGL2",
     "MUPO" ~ "MUPO2",
     "UKG2" ~ "POSE",
-    "OPUNT SP." ~ "CYEC3", # Mikaela mapped to CYEC, but this seems more correct
+    "OPUNT SP." ~ "CYLIN2", # Mikaela mapped to CYEC. Its probably CYEC3, but using CYLIN2 (per Nicole)
     "Opuntia" ~ "OPUNT", # Mainly for consistency, change in codes doc
     "DPCR" ~ "SPCR",
     "YUCC" ~ "YUCCA"))
@@ -105,13 +105,14 @@ mystery_codes <- tibble(lpi_codes) %>%
 
 # Some of these mystery codes can be solved with feedback from Mikaela (see 
 # SolvingLPIprobelm.xlsx). Add the missing codes here 
-add.codes <- tibble(vocabulary = c(rep("USDA", 3),rep("custom", 9)), 
+add.codes <- tibble(vocabulary = c(rep("USDA", 3),rep("custom", 10)), 
   code = mystery_codes$lpi_codes,
   meaning=c("Peraphyllum ramosissimum",
             "Cylindropuntia echinocarpa (Engelm. & J.M. Bigelow) F.M. Knuth",
             "Acourtia nana (A. Gray) Reveal & R.M. King","Dalea formosa",
             "no plant present","Herbaceous litter","Woody litter <2.5 cm",
-            "Unknown grass","Gravel rock >2<64mm","incipient/physical crust",
+            "Unknown grass","Cylindropuntia (Engelm.) Kreuzinger",
+            "Gravel rock >2<64mm","incipient/physical crust",
             "dark cyanobacterial/physical crust","Psora decipiens"))
 
 df.export2 <- bind_rows(df.export2, add.codes)
@@ -147,4 +148,4 @@ file.copy(file.path(in_path, "Cross Desert All Sites.kmz"),
 
 #### Publish?
 library(jerald)
-publish_dataset(210467002, "edi.staging", out_path, "~/Desktop", dry_run=TRUE, s3_upload=TRUE)
+publish_dataset(210467002, "edi.staging", out_path, dry_run=TRUE, s3_upload=TRUE)
